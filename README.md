@@ -1,2 +1,2 @@
-# go-good-code
+# good-code
 good code collections
