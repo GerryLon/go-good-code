@@ -1,2 +1,2 @@
 # go-good-code
-good code of golang
+good code collections
