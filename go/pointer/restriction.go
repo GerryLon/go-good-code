@@ -1,4 +1,4 @@
-package pointer
+package main
 
 // func restriction_demo1() {
 // 	i := 3
