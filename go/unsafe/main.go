@@ -10,7 +10,7 @@ type Programmer struct {
 	age uint8
 }
 
-func main() {
+func unsafe_basic() {
 	p := Programmer{"gerrylon", 18}
 	fmt.Println(p) // {gerrylon 18}
 
@@ -28,4 +28,8 @@ func main() {
 	age = (*uint8)(unsafe.Pointer(&p.age))
 	*age = 20
 	fmt.Println(p) // {gl 20}
+}
+
+func main() {
+	
 }
