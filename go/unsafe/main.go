@@ -75,8 +75,50 @@ func stringAndBytesTransformationTest() {
 	fmt.Println(s == bytes2string(string2bytes(s)))
 }
 
+
+func getSliceLen() {
+
+	slice := make([]int, 9, 20)
+
+	// type slice struct {
+	//	array unsafe.Pointer
+	//	len   int
+	//	cap   int
+	// }
+	myLen := *(*int)(unsafe.Pointer(uintptr(unsafe.Pointer(&slice)) + 8))
+	// 9 9
+	fmt.Println(myLen, len(slice))
+
+	myCap := *(*int)(unsafe.Pointer(uintptr(unsafe.Pointer(&slice)) + 16))
+	// 20 20
+	fmt.Println(myCap, cap(slice))
+}
+
+func getMapLen() {
+	// // A header for a Go map.
+	// type hmap struct {
+	// 	// Note: the format of the hmap is also encoded in cmd/compile/internal/gc/reflect.go.
+	// 	// Make sure this stays in sync with the compiler's definition.
+	// 	count int // # live cells == size of map.  Must be first (used by len() builtin)
+	// 	flags uint8
+	// 	B     uint8 // log_2 of # of buckets (can hold up to loadFactor * 2^B items)
+	// }
+
+	// 注意 makemap返回的是 *hmap
+	// func makemap(t *maptype, hint int, h *hmap) *hmap
+	m := make(map[string]string)
+	m["hello"] = "world"
+	m["world"] = "hello"
+	myLen := **(**int)(unsafe.Pointer(&m))
+
+	// 2 2
+	fmt.Println(myLen, len(m))
+}
+
 func main() {
 	// unsafe_basic()
 	// unsafe_change_private_field()
-	stringAndBytesTransformationTest()
+	// stringAndBytesTransformationTest()
+	getSliceLen()
+	getMapLen()
 }
