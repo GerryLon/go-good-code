@@ -38,7 +38,8 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 
 	if l1 != nil {
 		cur.Next = l1
-	} else {
+	}
+	if l2 != nil {
 		cur.Next = l2
 	}
 
