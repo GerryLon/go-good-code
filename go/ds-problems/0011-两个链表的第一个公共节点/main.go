@@ -51,6 +51,29 @@ func solution1(pHead1 *ListNode, pHead2 *ListNode) *ListNode {
 	return nil
 }
 
+//
+func solution2(pHead1 *ListNode, pHead2 *ListNode) *ListNode {
+	if pHead1 == nil || pHead2 == nil {
+		return nil
+	}
+
+	p1, p2 := pHead1, pHead2
+	// 根据题目， 一定有p1==p2， 所以这里不会死循环
+	for p1 != p2 {
+		p1 = p1.Next
+		p2 = p2.Next
+
+		if p1 != p2 {
+			if p1 == nil {
+				p1 = pHead2
+			}
+			if p2 == nil {
+				p2 = pHead1
+			}
+		}
+	}
+	return p1
+}
 func main() {
 
 }
