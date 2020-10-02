@@ -6,6 +6,7 @@
 int main(int argc, char const *argv[]) {
 	FILE *fp_src, *fp_dst;
 	char buffer[BUF_SIZE];
+	int n = 0;
 
 	if (argc != 3) {
 		fprintf(stderr, "Usage: %s src dst\n", argv[0]);
@@ -26,10 +27,9 @@ int main(int argc, char const *argv[]) {
 	}
 
 
-	while (fgets(buffer, BUF_SIZE, fp_src)) {
-		fputs(buffer, fp_dst);
+	while ((n = fread(buffer, 1, BUF_SIZE, fp_src)) > 0) {
+		fwrite(buffer, 1, n, fp_dst);
 	}
-
 
 	fclose(fp_src);
 	fclose(fp_dst);
