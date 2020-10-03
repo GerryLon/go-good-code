@@ -8,7 +8,6 @@ int main(int argc, char const *argv[]) {
 	}
 
 	FILE *fp;
-	int count = 0;
 
 	fp = fopen(argv[1], "r");
 	if (!fp) {
@@ -16,14 +15,13 @@ int main(int argc, char const *argv[]) {
 		exit(1);
 	}
 
-	while (fgetc(fp) != EOF) {
-		count++;
-	}
+	fseek(fp, 0, SEEK_END);
 
 	// format like `wc -c filename`
-	printf("%d %s\n", count, argv[1]);
+	printf("%ld %s\n", ftell(fp), argv[1]);
 
 	fclose(fp);
 
 	return 0;
 }
+
