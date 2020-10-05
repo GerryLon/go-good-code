@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS += -Wall
+CFLAGS += -Wall -pthread
 
 RM = rm -f
 PHONY =
