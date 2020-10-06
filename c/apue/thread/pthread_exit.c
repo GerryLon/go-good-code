@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <pthread.h>
 
@@ -20,13 +21,13 @@ int main() {
 
 	err = pthread_create(&tid1, NULL, start_fn1, NULL);
 	if (err != 0) {
-		perror("pthread_create() 1");
+		fprintf(stderr, "pthread_create() 1, err: %s\n", strerror(err));
 		exit(1);
 	}
-	
+
 	err = pthread_create(&tid2, NULL, start_fn2, NULL);
 	if (err != 0) {
-		perror("pthread_create() 2");
+		fprintf(stderr, "pthread_create() 2, err: %s\n", strerror(err));
 		exit(1);
 	}
 
@@ -36,14 +37,14 @@ int main() {
 		exit(1);
 	}
 	printf("thread 1 exit code: %d\n", (int)thread_retval);
-	
+
 	err = pthread_join(tid2, &thread_retval);
 	if (err != 0) {
 		perror("pthread_join() 2");
 		exit(1);
 	}
 	printf("thread 2 exit code: %d\n", (int)thread_retval);
-	
+
 	exit(0);
 }
 
