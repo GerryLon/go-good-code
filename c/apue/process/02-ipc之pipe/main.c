@@ -60,7 +60,7 @@ int main() {
 			}
 			if (n == 0) {
 				printf("read end\n");
-				exit(0);
+				break;
 			}
 			printf("%s\n", buf);
 		}
