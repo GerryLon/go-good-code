@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/GerryLon/good-code/go/unsafe/unsafe_model"
+	"github.com/GerryLon/good-code/go/demo/unsafe/unsafe_model"
 )
 
 func unsafe_basic() {
