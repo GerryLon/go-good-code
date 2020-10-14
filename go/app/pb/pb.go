@@ -15,7 +15,6 @@ type Bar struct {
 	graph   string // 显示符号
 }
 
-
 func (bar *Bar) NewOption(start, total int64) {
 	bar.cur = start
 	bar.total = total
@@ -48,6 +47,6 @@ func (bar *Bar) Play(cur int64) {
 	fmt.Printf("\r[%-50s]%3d%%  %8d/%d", bar.rate, bar.percent, bar.cur, bar.total)
 }
 
-func (bar *Bar) Finish(){
+func (bar *Bar) Finish() {
 	fmt.Println()
 }

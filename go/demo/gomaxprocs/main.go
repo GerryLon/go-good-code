@@ -12,7 +12,7 @@ func main() {
 	const N = 256
 	wg.Add(N)
 	ch := make(chan string, N)
-	for i := 0; i <N/2; i++ {
+	for i := 0; i < N/2; i++ {
 		go func() {
 			defer wg.Done()
 			// fmt.Println("A:", i)
@@ -20,7 +20,7 @@ func main() {
 		}()
 	}
 
-	for i := 0; i <N/2; i++ {
+	for i := 0; i < N/2; i++ {
 		go func(i int) {
 			defer wg.Done()
 			// fmt.Println("B:", i)

@@ -9,5 +9,3 @@ func IsLittleEndian() bool {
 	firstByte := *((*byte)(unsafe.Pointer(&i)))
 	return firstByte == 0x04
 }
-
-

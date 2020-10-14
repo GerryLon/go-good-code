@@ -6,7 +6,7 @@
 	例如：
 	  ["2", "1", "+", "3", "*"] -> ((2 + 1) * 3) -> 9
 	  ["4", "13", "5", "/", "+"] -> (4 + (13 / 5)) -> 6
- */
+*/
 package main
 
 import (
@@ -17,11 +17,11 @@ import (
 func eval(a, b int, op string) int {
 	switch op {
 	case "+":
-		return a+b
+		return a + b
 	case "-":
-		return a-b
+		return a - b
 	case "*":
-		return a*b
+		return a * b
 	case "/":
 		return a / b
 	}
@@ -37,12 +37,12 @@ func isOp(t string) bool {
 	}
 }
 
-func evalRPN(tokens []string ) int {
+func evalRPN(tokens []string) int {
 	// write code here
 	stack := make([]int, 0)
 	var firstNumber, secondNumber, tmpResult int
 
-	for _, t := range tokens  {
+	for _, t := range tokens {
 		if isOp(t) { // 遇到操作符， 取栈顶两个元素， 注意顺序
 			secondNumber = stack[0]
 			firstNumber = stack[1]
@@ -61,7 +61,7 @@ func evalRPN(tokens []string ) int {
 	return stack[0]
 }
 
-func main()  {
+func main() {
 	fmt.Println(evalRPN([]string{"2", "1", "+", "3", "*"}) == 9)
 	fmt.Println(evalRPN([]string{"4", "13", "5", "/", "+"}) == 6)
 }

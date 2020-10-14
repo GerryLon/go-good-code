@@ -11,7 +11,7 @@ import (
 func unsafe_basic() {
 	type Programmer struct {
 		name string
-		age uint8
+		age  uint8
 	}
 
 	p := Programmer{"gerrylon", 18}
@@ -59,7 +59,6 @@ func string2bytes(s string) []byte {
 	return *(*[]byte)(unsafe.Pointer(&by))
 }
 
-
 func bytes2string(bs []byte) string {
 	by := (*reflect.SliceHeader)(unsafe.Pointer(&bs))
 
@@ -74,7 +73,6 @@ func stringAndBytesTransformationTest() {
 	s := "hello world"
 	fmt.Println(s == bytes2string(string2bytes(s)))
 }
-
 
 func getSliceLen() {
 

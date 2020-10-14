@@ -6,9 +6,9 @@ import (
 )
 
 type ST struct {
-	String string `json:"name"`
-	Int *int `json:"int"`
-	Slice []string `json:"slice"`
+	String string   `json:"name"`
+	Int    *int     `json:"int"`
+	Slice  []string `json:"slice"`
 }
 
 func main() {
@@ -16,8 +16,8 @@ func main() {
 	slice := []string{"aa", "bb"}
 	st := ST{
 		String: "hello",
-		Int: &i,
-		Slice: slice,
+		Int:    &i,
+		Slice:  slice,
 	}
 	bytes, err := json.MarshalIndent(st, "", "  ")
 	if err != nil {
